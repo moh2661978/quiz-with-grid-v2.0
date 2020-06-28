@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <title>5 Minutes Quiz Grid</title>
+  <meta charset="utf-8">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="Quiz app" content="Free Web tutorials for HTML and CSS and javascript">
+  <meta name="author" content="Mohamed Mahmoud">
+
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  <style>
+    /* The body */
+    body {
+      background-color: #444;
+      color: #fffff8;
+      font-size: 16px;
+    }
+
+    /* The main */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-auto-rows: max-content;
+      grid-template-areas:
+        "sd hd hd hd hd hd hd hd"
+        "sd main main main main main main main"
+        "sd ft ft ft ft ft ft ft";
+      grid-gap: 10px;
+      width: 100vw;
+      justify-content: center;
+      border: 2px solid rgb(255, 94, 0);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    /* The header */
+    .header {
+      grid-area: hd;
+    }
+
+    .imgrow {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: top;
+      background: rgb(75, 75, 75);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      border: 3px solid gold;
+    }
+
+    .imgcolumn {
+      flex: 100%;
+      width: auto;
+      height: auto;
+      text-align: center;
+      padding: 1%;
+    }
+
+    .image {
+      width: 50%;
+      border-radius: 50%;
+      border: 2px solid lightgreen;
+      padding: 2px;
+    }
+
+    /* The side navigation menu */
+    .sidebar {
+      grid-area: sd;
+      height: 100%;
+      position: fixed;
+      overflow: auto;
+      overflow-x: hidden;
+      /* Disable horizontal scroll */
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      border: 3px solid gold;
+    }
+
+    /* Sidebar links */
+    .sidebar a {
+      display: block;
+      color: lightgreen;
+      padding: 16px;
+      text-decoration: none;
+    }
+
+    /* Active/current link */
+    .sidebar a.active {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    /* Links on mouse-over */
+    .sidebar a:hover:not(.active) {
+      background-color: #555;
+      color: white;
+    }
+
+    /* The Title */
+    h1 {
+      text-align: center;
+      font-size: 2.5vmax;
+    }
+
+    /* The Questions */
+    .content {
+      grid-area: main;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      border: 3px solid gold;
+    }
+
+    .quesions {
+      clear: both;
+      padding: 5px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      font-size: 1.2em;
+      color: lightgreen;
+    }
+
+    label {
+      display: block;
+      margin: 10px;
+      font-size: 1.2em;
+    }
+
+    input {
+      width: 30px;
+      margin-left: 20px;
+    }
+
+    button {
+      width: 100px;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: lightgreen;
+    }
+
+    button:hover>span {
+      color: rgb(255, 255, 255);
+    }
+
+    button>span:hover {
+      color: red;
+    }
+
+    /* The Footer */
+    .footer {
+      grid-area: ft;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      border: 3px solid gold;
+
+    }
+
+    footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: top;
+      text-align: center;
+      background: rgb(75, 75, 75);
+      color: rgb(75, 189, 30);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    footer>ul {
+      display: inline-block;
+    }
+
+    footer>ul>li {
+      display: inline-block;
+      padding: 10px;
+    }
+
+    footer>ul>li>a {
+      color: rgb(75, 189, 30);
+    }
+
+    /* The Links */
+    a {
+      font-size: .8em;
+      text-align: center;
+      color: rgb(75, 189, 30);
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="header">
+      <div class="imgrow">
+        <div class="imgcolumn">
+          <a href="https://codeactually.com/interactivequiz.html" target="_blank">
+            <figure><img src="CodeActually.jpg" alt="CodeActually logo" class="image">
+              <figcaption>Original code: CodeActually</figcaption>
+            </figure>
+          </a>
+        </div>
+
+        <div class="imgcolumn">
+          <a href="https://nfpdiscussions.udacity.com/t/5-minutes-quiz-challenge-track/14205" target="_blank">
+            <figure><img src="salah.jpg" alt="tutor photo" class="image">
+              <figcaption>Quiz By: Eng.Salah Selim</figcaption>
+            </figure>
+          </a>
+        </div>
+
+        <div class="imgcolumn">
+          <a href="https://www.linkedin.com/in/mohamed-mahmoud-303713a" target="_blank">
+            <figure><img src="mma.jpg" alt="student photo" class="image">
+              <figcaption>Code Edited By: Mohamed Mahmoud</figcaption>
+            </figure>
+          </a>
+        </div>
+
+        <div class="imgcolumn">
+          <a href="https://github.com/moh2661978/quizzcode" target="_blank">
+            <figure><img src="mmagithub.gif" alt="GitCode" class="image">
+              <figcaption>Edited Code @GitHub</figcaption>
+            </figure>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sidebar">
+
+      <a class="active" href="#home">Home</a>
+      <a href="https://egfwd.com/about/" target="_blank">About</a>
+      <a href="https://egfwd.com/web/" target="_blank">Web Specialization</a>
+      <a href="https://www.facebook.com/groups/egyptfwd/" target="_blank">Facebook</a>
+      <a href="https://egfwd.com/faqs/" target="_blank">FAQ</a>
+      <a href="https://egfwd.com/enroll-now/" target="_blank">ENROLL NOW</a>
+
+    </div>
+
+    <div class="content">
+      <h1>5 Minutes Quiz</h1>
+      <form id="form1" action=" ">
+
+        <h2 class="quesions">Q1-Which of the following selector selects all paragraph elements whose lang attribute has a value of exactly “fr”?</h2>
+        <label for="var_string"><input type="radio" name="variable" value="0" id="var_string" />p[lang]</label>
+        <label for="var_join"><input type="radio" name="variable" value="25" id="var_join" />p[lang=“fr”]</label>
+        <label for="var_info"><input type="radio" name="variable" value="0" id="var_info" />p[lang~=“fr”]</label>
+        <label for="var_condition"><input type="radio" name="variable" value="0" id="var_condition" />p[lang|=“fr”]</label>
+
+        <h2 class="quesions">Q2-Which of the following property is used to control the scrolling of an image in the background?</h2>
+        <label for="sub_string"><input type="radio" name="sub" value="25" id="sub_string" />background-attachment</label>
+        <label for="sub_join"><input type="radio" name="sub" value="0" id="sub_join" />background</label>
+        <label for="sub_info"><input type="radio" name="sub" value="0" id="sub_info" />background-repeat</label>
+        <label for="sub_condition"><input type="radio" name="sub" value="0" id="sub_condition" />background-position</label>
+
+        <h2 class="quesions">Q3-Which of the following property is used to add or subtract space between the words of a sentence?</h2>
+        <label for="cat_string"><input type="radio" name="con" value="0" id="cat_string" />color</label>
+        <label for="cat_join"><input type="radio" name="con" value="0" id="cat_join" />direction</label>
+        <label for="cat_info"><input type="radio" name="con" value="0" id="cat_info" />letter-spacing</label>
+        <label for="cat_condition"><input type="radio" name="con" value="25" id="cat_condition" />word-spacing</label>
+
+        <h2 class="quesions">Q4-Which of the following property of a anchor element signifies unvisited hyperlinks?</h2>
+        <label for="if_string"><input type="radio" name="ifstate" value="25" id="if_string" />link</label>
+        <label for="if_join"><input type="radio" name="ifstate" value="0" id="if_join" />visited</label>
+        <label for="if_info"><input type="radio" name="ifstate" value="0" id="if_info" />hover</label>
+        <label for="if_condition"><input type="radio" name="ifstate" value="0" id="if_condition" />active</label>
+
+        <h2 class="quesions">Q5-Which of the following property of a table element specifies whether the browser should control the appearance of the adjacent borders that touch each other or whether each cell should maintain its style?</h2>
+        <label for="var_string2"><input type="radio" name="variable2" value="25" id="var_string2" />border-collapse</label>
+        <label for="var_join2"><input type="radio" name="variable2" value="0" id="var_join2" />border-spacing</label>
+        <label for="var_info2"><input type="radio" name="variable2" value="0" id="var_info2" />caption-side</label>
+        <label for="var_condition2"><input type="radio" name="variable2" value="0" id="var_condition2" />empty-cells</label>
+
+        <h2 class="quesions">Q6-Which of the following property changes the width of top border?</h2>
+        <label for="sub_string2"><input type="radio" name="sub2" value="0" id="sub_string2" />border-bottom-width</label>
+        <label for="sub_join2"><input type="radio" name="sub2" value="25" id="sub_join2" />border-top-width</label>
+        <label for="sub_info2"><input type="radio" name="sub2" value="0" id="sub_info2" />border-left-width</label>
+        <label for="sub_condition2"><input type="radio" name="sub2" value="0" id="sub_condition2" />border-right-width</label>
+
+        <h2 class="quesions">Q7-Which of the following property specifies an image for the marker rather than a bullet point or number?</h2>
+        <label for="cat_string2"><input type="radio" name="con2" value="0" id="cat_string2" />list-style-type</label>
+        <label for="cat_join2"><input type="radio" name="con2" value="0" id="cat_join2" />list-style-position</label>
+        <label for="cat_info2"><input type="radio" name="con2" value="25" id="cat_info2" />list-style-image</label>
+        <label for="cat_condition2"><input type="radio" name="con2" value="0" id="cat_condition2" />list-style</label>
+
+        <h2 class="quesions">Q8-Which of the following value of cursor shows it as an arrow?</h2>
+        <label for="if_string2"><input type="radio" name="ifstate2" value="0" id="if_string2" />crosshair</label>
+        <label for="if_join2"><input type="radio" name="ifstate2" value="25" id="if_join2" />default</label>
+        <label for="if_info2"><input type="radio" name="ifstate2" value="0" id="if_info2" />pointer</label>
+        <label for="if_condition2"><input type="radio" name="ifstate2" value="0" id="if_condition2" />move</label>
+
+        <button type="submit" value="Submit"><span>Submit</span></button>
+
+      </form>
+
+      <p>Your grade is: <span id="grade">__</span></p>
+      <p id="grade2"></p>
+
+      <script>
+        document.getElementById("form1").onsubmit = function() {
+          variable = parseInt(document.querySelector('input[name = "variable"]:checked').value);
+          sub = parseInt(document.querySelector('input[name = "sub"]:checked').value);
+          con = parseInt(document.querySelector('input[name = "con"]:checked').value);
+          ifstate = parseInt(document.querySelector('input[name = "ifstate"]:checked').value);
+          variable2 = parseInt(document.querySelector('input[name = "variable2"]:checked').value);
+          sub2 = parseInt(document.querySelector('input[name = "sub2"]:checked').value);
+          con2 = parseInt(document.querySelector('input[name = "con2"]:checked').value);
+          ifstate2 = parseInt(document.querySelector('input[name = "ifstate2"]:checked').value);
+          result = variable + sub + con + ifstate + variable2 + sub2 + con2 + ifstate2;
+          document.getElementById("grade").innerHTML = result;
+          if (result == 0) {
+            result2 = "I don't think you studied.<br /><img src='none.jpg' width='300' />"
+          };
+          if (result == 25) {
+            result2 = "I don't think you studied.<br /><img src='none.jpg' width='300' />"
+          };
+          if (result == 50) {
+            result2 = "You need to spend more time. Try again.<br /><img src='poor.jpg' width='300' />"
+          };
+          if (result == 75) {
+            result2 = "You need to spend more time. Try again.<br /><img src='poor.jpg' width='300' />"
+          };
+          if (result == 100) {
+            result2 = "I think you could do better. Try again.<br /><img src='avg.jpg' width='300' />"
+          };
+          if (result == 125) {
+            result2 = "I think you could do better. Try again.<br /><img src='avg.jpg' width='300' />"
+          };
+          if (result == 150) {
+            result2 = "So close. Try again.<br /><img src='above.jpg' width='300' />"
+          };
+          if (result == 175) {
+            result2 = "So close. Try again.<br /><img src='above.jpg' width='300' />"
+          };
+          if (result == 200) {
+            result2 = "You're a JavaScript pro!<br /><img src='excellent.jpg' width='300' />"
+          };
+          document.getElementById("grade2").innerHTML = result2;
+          return false; // required to not refresh the page; just leave this here
+        } //this ends the submit function
+      </script>
+
+    </div>
+
+    <div class="footer">
+
+      <footer>
+        <ul>
+          <li>&copy;2020EgyptFWD <a href="https://egfwd.com" target="_blank"><img src="footer_logo.png" alt="fwd" style="float:inline-start;vertical-align:middle;width:12em;"></a></li>
+          <li><a href="https://egfwd.com/about/" target="_blank">About</a></li>
+          <li><a href="https://egfwd.com/web/" target="_blank">Web Specialization</a></li>
+          <li><a href="https://www.facebook.com/groups/egyptfwd/" target="_blank">Facebook</a></li>
+          <li><a href="https://egfwd.com/faqs/" target="_blank">FAQ</a></li>
+          <li><a href="https://egfwd.com/enroll-now/" target="_blank">ENROLL NOW</a></li>
+
+        </ul>
+      </footer>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>
