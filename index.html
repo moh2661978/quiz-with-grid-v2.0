@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <title>5 Minutes Quiz Grid</title>
+  <title>5 Minutes Quiz with Grid</title>
   <meta charset="utf-8">
   <meta name="keywords" content="HTML, CSS, JavaScript">
   <meta name="Quiz app" content="Free Web tutorials for HTML and CSS and javascript">
@@ -31,16 +31,15 @@
     /* The main */
     .container {
       display: grid;
-      grid-template-columns: repeat(8, 1fr);
+      grid-template-columns: 100px auto auto auto auto auto auto auto auto auto;
       grid-auto-rows: max-content;
       grid-template-areas:
-        "sd hd hd hd hd hd hd hd"
-        "sd main main main main main main main"
-        "sd ft ft ft ft ft ft ft";
+        "hd hd hd hd hd hd hd hd hd hd "
+        "sd main main main main main main main main main"
+        "ft ft ft ft ft ft ft ft ft ft";
       grid-gap: 10px;
-      width: 100vw;
+      width: 100%;
       justify-content: center;
-      border: 2px solid rgb(255, 94, 0);
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       border-bottom-left-radius: 10px;
@@ -50,19 +49,23 @@
     /* The header */
     .header {
       grid-area: hd;
-    }
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
 
+      background-color:rgb(70, 112, 119);
+    }
     .imgrow {
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
       align-items: top;
-      background: rgb(75, 75, 75);
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
-      border: 3px solid gold;
+      border: 3px solid gray;
     }
 
     .imgcolumn {
@@ -71,6 +74,11 @@
       height: auto;
       text-align: center;
       padding: 1%;
+    }
+    .imgcolumn > a {
+      font-size: 1em;
+      text-align: center;
+      color: rgb(9, 255, 0);
     }
 
     .image {
@@ -84,15 +92,13 @@
     .sidebar {
       grid-area: sd;
       height: 100%;
-      position: fixed;
       overflow: auto;
       overflow-x: hidden;
-      /* Disable horizontal scroll */
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
-      border: 3px solid gold;
+      border: 3px solid gray;
     }
 
     /* Sidebar links */
@@ -101,6 +107,8 @@
       color: lightgreen;
       padding: 16px;
       text-decoration: none;
+      font-size: .8em;
+      text-align: center;
     }
 
     /* Active/current link */
@@ -128,7 +136,7 @@
       border-top-right-radius: 10px;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
-      border: 3px solid gold;
+      border: 3px solid gray;
     }
 
     .quesions {
@@ -177,7 +185,7 @@
       border-top-right-radius: 10px;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
-      border: 3px solid gold;
+      border: 3px solid gray;
 
     }
 
@@ -187,8 +195,9 @@
       justify-content: space-evenly;
       align-items: top;
       text-align: center;
-      background: rgb(75, 75, 75);
+      background: rgba(12, 12, 12, 0.829);
       color: rgb(75, 189, 30);
+      font-size: .8em;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       border-bottom-left-radius: 10px;
@@ -205,13 +214,6 @@
     }
 
     footer>ul>li>a {
-      color: rgb(75, 189, 30);
-    }
-
-    /* The Links */
-    a {
-      font-size: .8em;
-      text-align: center;
       color: rgb(75, 189, 30);
     }
   </style>
